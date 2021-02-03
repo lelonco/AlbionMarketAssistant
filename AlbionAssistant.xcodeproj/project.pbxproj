@@ -7,18 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4207F5D25C66317006C91BA /* UserDefaults+firstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4207F5C25C66317006C91BA /* UserDefaults+firstLaunch.swift */; };
+		C4207F5E25C66317006C91BA /* UserDefaults+firstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4207F5C25C66317006C91BA /* UserDefaults+firstLaunch.swift */; };
+		C4207F6525C665B6006C91BA /* CodingUserInfoKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4207F6425C665B6006C91BA /* CodingUserInfoKey+Extensions.swift */; };
+		C4207F6625C665B6006C91BA /* CodingUserInfoKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4207F6425C665B6006C91BA /* CodingUserInfoKey+Extensions.swift */; };
+		C4207F7C25C66E38006C91BA /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = C4207F7B25C66E38006C91BA /* items.json */; };
+		C4207F7D25C66E38006C91BA /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = C4207F7B25C66E38006C91BA /* items.json */; };
+		C4207F8825C6F84E006C91BA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4207F8725C6F84E006C91BA /* SearchViewModel.swift */; };
+		C4207F8925C6F84E006C91BA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4207F8725C6F84E006C91BA /* SearchViewModel.swift */; };
+		C42C13A225C8D1F900042D22 /* AlbionNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C13A125C8D1F900042D22 /* AlbionNetworkModel.swift */; };
+		C436CFE825C6289A00B1A364 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C436CFE725C6289A00B1A364 /* ContentView.swift */; };
+		C436CFE925C6289A00B1A364 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C436CFE725C6289A00B1A364 /* ContentView.swift */; };
+		C4BC5BA225C8C4AD003CCC8C /* LocalizedOjbect+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BC5B9E25C8C4AD003CCC8C /* LocalizedOjbect+CoreDataClass.swift */; };
+		C4BC5BA325C8C4AD003CCC8C /* LocalizedOjbect+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BC5B9F25C8C4AD003CCC8C /* LocalizedOjbect+CoreDataProperties.swift */; };
 		C4C10F4025C612B300890C32 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C10F3F25C612B300890C32 /* Tests_iOS.swift */; };
 		C4C10F4B25C612B400890C32 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C10F4A25C612B400890C32 /* Tests_macOS.swift */; };
 		C4C10F4D25C612B400890C32 /* AlbionAssistant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4C10F2125C612B200890C32 /* AlbionAssistant.xcdatamodeld */; };
 		C4C10F4E25C612B400890C32 /* AlbionAssistant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4C10F2125C612B200890C32 /* AlbionAssistant.xcdatamodeld */; };
 		C4C10F4F25C612B400890C32 /* AlbionAssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C10F2325C612B200890C32 /* AlbionAssistantApp.swift */; };
 		C4C10F5025C612B400890C32 /* AlbionAssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C10F2325C612B200890C32 /* AlbionAssistantApp.swift */; };
-		C4C10F5125C612B400890C32 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C10F2425C612B200890C32 /* ContentView.swift */; };
-		C4C10F5225C612B400890C32 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C10F2425C612B200890C32 /* ContentView.swift */; };
 		C4C10F5325C612B400890C32 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C10F2525C612B200890C32 /* Persistence.swift */; };
 		C4C10F5425C612B400890C32 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C10F2525C612B200890C32 /* Persistence.swift */; };
 		C4C10F5525C612B400890C32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4C10F2625C612B300890C32 /* Assets.xcassets */; };
 		C4C10F5625C612B400890C32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4C10F2625C612B300890C32 /* Assets.xcassets */; };
+		C4CF1A5525C6386700506585 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF1A5425C6386700506585 /* Items.swift */; };
+		C4CF1A5625C6386700506585 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF1A5425C6386700506585 /* Items.swift */; };
+		C4CF1A5C25C638D700506585 /* albionItems in Resources */ = {isa = PBXBuildFile; fileRef = C4CF1A5B25C638D700506585 /* albionItems */; };
+		C4CF1A5D25C638D700506585 /* albionItems in Resources */ = {isa = PBXBuildFile; fileRef = C4CF1A5B25C638D700506585 /* albionItems */; };
+		C4CF1A7925C65E3A00506585 /* PersistantContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF1A7825C65E3A00506585 /* PersistantContainer.swift */; };
+		C4CF1A7A25C65E3A00506585 /* PersistantContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF1A7825C65E3A00506585 /* PersistantContainer.swift */; };
+		C4CF1A9D25C6618100506585 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF1A9C25C6618100506585 /* CoreDataManager.swift */; };
+		C4CF1A9E25C6618100506585 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF1A9C25C6618100506585 /* CoreDataManager.swift */; };
+		C4DA830F25CA2071000E3061 /* AlbionItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA830D25CA2071000E3061 /* AlbionItem+CoreDataClass.swift */; };
+		C4DA831025CA2071000E3061 /* AlbionItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA830E25CA2071000E3061 /* AlbionItem+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +60,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C4207F5C25C66317006C91BA /* UserDefaults+firstLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+firstLaunch.swift"; sourceTree = "<group>"; };
+		C4207F6425C665B6006C91BA /* CodingUserInfoKey+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+Extensions.swift"; sourceTree = "<group>"; };
+		C4207F7B25C66E38006C91BA /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
+		C4207F8725C6F84E006C91BA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		C42C13A125C8D1F900042D22 /* AlbionNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbionNetworkModel.swift; sourceTree = "<group>"; };
+		C436CFE725C6289A00B1A364 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C4BC5B9E25C8C4AD003CCC8C /* LocalizedOjbect+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedOjbect+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C4BC5B9F25C8C4AD003CCC8C /* LocalizedOjbect+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedOjbect+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C4C10F2225C612B200890C32 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		C4C10F2325C612B200890C32 /* AlbionAssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbionAssistantApp.swift; sourceTree = "<group>"; };
-		C4C10F2425C612B200890C32 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C4C10F2525C612B200890C32 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C4C10F2625C612B300890C32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4C10F2B25C612B300890C32 /* AlbionAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbionAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +83,12 @@
 		C4C10F4625C612B400890C32 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4C10F4A25C612B400890C32 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		C4C10F4C25C612B400890C32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4CF1A5425C6386700506585 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		C4CF1A5B25C638D700506585 /* albionItems */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = albionItems; sourceTree = "<group>"; };
+		C4CF1A7825C65E3A00506585 /* PersistantContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantContainer.swift; sourceTree = "<group>"; };
+		C4CF1A9C25C6618100506585 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		C4DA830D25CA2071000E3061 /* AlbionItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlbionItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C4DA830E25CA2071000E3061 /* AlbionItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlbionItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +123,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C4207F6325C6659C006C91BA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C4207F6425C665B6006C91BA /* CodingUserInfoKey+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C4207F8625C6F83B006C91BA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C4207F8725C6F84E006C91BA /* SearchViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		C4C10F1B25C612B200890C32 = {
 			isa = PBXGroup;
 			children = (
@@ -104,10 +154,18 @@
 		C4C10F2025C612B200890C32 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C4207F8625C6F83B006C91BA /* ViewModels */,
+				C4207F6325C6659C006C91BA /* Extensions */,
+				C4CF1A7F25C65E7600506585 /* Managers */,
+				C4CF1A6C25C65BBC00506585 /* Models */,
 				C4C10F2325C612B200890C32 /* AlbionAssistantApp.swift */,
-				C4C10F2425C612B200890C32 /* ContentView.swift */,
+				C436CFE725C6289A00B1A364 /* ContentView.swift */,
+				C4207F7B25C66E38006C91BA /* items.json */,
+				C4CF1A5425C6386700506585 /* Items.swift */,
 				C4C10F2525C612B200890C32 /* Persistence.swift */,
 				C4C10F2625C612B300890C32 /* Assets.xcassets */,
+				C4CF1A5B25C638D700506585 /* albionItems */,
+				C4207F5C25C66317006C91BA /* UserDefaults+firstLaunch.swift */,
 				C4C10F2125C612B200890C32 /* AlbionAssistant.xcdatamodeld */,
 			);
 			path = Shared;
@@ -157,6 +215,35 @@
 				C4C10F4C25C612B400890C32 /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		C4CF1A6C25C65BBC00506585 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C4DA830D25CA2071000E3061 /* AlbionItem+CoreDataClass.swift */,
+				C4DA830E25CA2071000E3061 /* AlbionItem+CoreDataProperties.swift */,
+				C4BC5B9E25C8C4AD003CCC8C /* LocalizedOjbect+CoreDataClass.swift */,
+				C4BC5B9F25C8C4AD003CCC8C /* LocalizedOjbect+CoreDataProperties.swift */,
+				C42C13A125C8D1F900042D22 /* AlbionNetworkModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C4CF1A7F25C65E7600506585 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C4CF1A8025C65E8200506585 /* CoreData */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		C4CF1A8025C65E8200506585 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C4CF1A7825C65E3A00506585 /* PersistantContainer.swift */,
+				C4CF1A9C25C6618100506585 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,7 +370,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4CF1A5C25C638D700506585 /* albionItems in Resources */,
 				C4C10F5525C612B400890C32 /* Assets.xcassets in Resources */,
+				C4207F7C25C66E38006C91BA /* items.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +380,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4CF1A5D25C638D700506585 /* albionItems in Resources */,
 				C4C10F5625C612B400890C32 /* Assets.xcassets in Resources */,
+				C4207F7D25C66E38006C91BA /* items.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,9 +408,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4C10F4D25C612B400890C32 /* AlbionAssistant.xcdatamodeld in Sources */,
+				C4DA830F25CA2071000E3061 /* AlbionItem+CoreDataClass.swift in Sources */,
+				C4207F6525C665B6006C91BA /* CodingUserInfoKey+Extensions.swift in Sources */,
+				C4DA831025CA2071000E3061 /* AlbionItem+CoreDataProperties.swift in Sources */,
+				C4CF1A5525C6386700506585 /* Items.swift in Sources */,
+				C4207F5D25C66317006C91BA /* UserDefaults+firstLaunch.swift in Sources */,
 				C4C10F5325C612B400890C32 /* Persistence.swift in Sources */,
+				C4207F8825C6F84E006C91BA /* SearchViewModel.swift in Sources */,
+				C436CFE825C6289A00B1A364 /* ContentView.swift in Sources */,
+				C4CF1A9D25C6618100506585 /* CoreDataManager.swift in Sources */,
+				C42C13A225C8D1F900042D22 /* AlbionNetworkModel.swift in Sources */,
+				C4BC5BA325C8C4AD003CCC8C /* LocalizedOjbect+CoreDataProperties.swift in Sources */,
+				C4BC5BA225C8C4AD003CCC8C /* LocalizedOjbect+CoreDataClass.swift in Sources */,
+				C4CF1A7925C65E3A00506585 /* PersistantContainer.swift in Sources */,
 				C4C10F4F25C612B400890C32 /* AlbionAssistantApp.swift in Sources */,
-				C4C10F5125C612B400890C32 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,9 +430,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4C10F4E25C612B400890C32 /* AlbionAssistant.xcdatamodeld in Sources */,
+				C4207F6625C665B6006C91BA /* CodingUserInfoKey+Extensions.swift in Sources */,
+				C4CF1A5625C6386700506585 /* Items.swift in Sources */,
+				C4207F5E25C66317006C91BA /* UserDefaults+firstLaunch.swift in Sources */,
 				C4C10F5425C612B400890C32 /* Persistence.swift in Sources */,
+				C4207F8925C6F84E006C91BA /* SearchViewModel.swift in Sources */,
+				C436CFE925C6289A00B1A364 /* ContentView.swift in Sources */,
+				C4CF1A9E25C6618100506585 /* CoreDataManager.swift in Sources */,
+				C4CF1A7A25C65E3A00506585 /* PersistantContainer.swift in Sources */,
 				C4C10F5025C612B400890C32 /* AlbionAssistantApp.swift in Sources */,
-				C4C10F5225C612B400890C32 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

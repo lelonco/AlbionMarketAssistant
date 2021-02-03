@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D64" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AlbionItem" representedClassName="AlbionItem" syncable="YES">
+        <attribute name="index" optional="YES" attributeType="String"/>
+        <attribute name="localizationDescriptionVariable" optional="YES" attributeType="String"/>
+        <attribute name="localizationNameVariable" optional="YES" attributeType="String"/>
+        <attribute name="uniqueName" optional="YES" attributeType="String"/>
+        <relationship name="localizedDescriptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocalizedOjbect" inverseName="describedItem" inverseEntity="LocalizedOjbect"/>
+        <relationship name="localizedNames" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocalizedOjbect" inverseName="namedItem" inverseEntity="LocalizedOjbect" spotlightIndexingEnabled="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uniqueName"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="LocalizedOjbect" representedClassName="LocalizedOjbect" syncable="YES">
+        <attribute name="language" optional="YES" attributeType="String"/>
+        <attribute name="localizedString" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <relationship name="describedItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbionItem" inverseName="localizedDescriptions" inverseEntity="AlbionItem"/>
+        <relationship name="namedItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbionItem" inverseName="localizedNames" inverseEntity="AlbionItem"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="AlbionItem" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="LocalizedOjbect" positionX="-63" positionY="27" width="128" height="89"/>
     </elements>
 </model>
