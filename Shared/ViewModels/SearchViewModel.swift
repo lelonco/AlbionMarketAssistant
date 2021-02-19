@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import Combine
 
-class SearchViewModel: ObservableObject {
+class SearchViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
     @Published var searchText: String = "" {
         didSet {
             print(searchText)
@@ -18,12 +18,21 @@ class SearchViewModel: ObservableObject {
     @Published var data: Data? = nil
     @Published var fecthedResults: [AlbionItem]! = []
     private var disposables = Set<AnyCancellable>()
-    private var fetchedResultsController: NSFetchedResultsController<AlbionItem>? = nil
-    init() {
-        let request = self.createFetchRequest()
+    private var fetchedResultsController: NSFetchedResultsController<AlbionItem> = {
+        let request: NSFetchRequest<AlbionItem> = AlbionItem.fetchRequest()
+        let sort = NSSortDescriptor(key: "uniqueName", ascending: true)
+        request.sortDescriptors = [sort]
         
+        let controller: NSFetchedResultsController<AlbionItem> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: DatabaseManager.shared.managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        return controller
+    }()
+    
+    override init() {
+        super.init()
+        fetchedResultsController.delegate = self
+        let request = self.createFetchRequest()
+        try! fetchedResultsController.performFetch()
         try! DatabaseManager.shared.managedContext.execute(request)
-        (request)
         
         $searchText
             .dropFirst()
@@ -81,4 +90,11 @@ class SearchViewModel: ObservableObject {
         return asyncRequest
     }
     
+    // MARK: - NSFetchedResultsControllerDelegate
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChangeContentWith diff: CollectionDifference<NSManagedObjectID>) {
+        self.fecthedResults = self.fetchedResultsController.fetchedObjects ?? []
+    }
+
 }
