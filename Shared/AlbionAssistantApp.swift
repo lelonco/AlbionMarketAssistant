@@ -24,39 +24,40 @@ struct AlbionAssistantApp: App {
     func createInitialDataIfNeeded() {
         guard UserDefaults.isFirstLaunch() else { return }
         if let path = Bundle.main.path(forResource: "items", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let decoder = JSONDecoder()
-                decoder.userInfo[CodingUserInfoKey.context] = context
-                let parsed = try decoder.decode([AlbionNetworkModel].self, from: data)
-                _ = parsed.map { (networkModel) -> AlbionItem in
-                    let item = AlbionItem(context: self.context)
-                    
-                    item.index = networkModel.index
-                    item.localizationDescriptionVariable = networkModel.localizationDescriptionVariable
-                    item.localizationNameVariable = networkModel.localizationNameVariable
-                    item.uniqueName = networkModel.uniqueName
-                    item.localizedNames = NSSet(array: networkModel.localizedNames?.map({ (key: String, value: String) -> LocalizedOjbect in
-                        let localizedItem = LocalizedOjbect(context: self.context)
-                        localizedItem.language = key
-                        localizedItem.localizedString = value
-                        return localizedItem
-                    }) ?? [])
-                    
-                    item.localizedDescriptions = NSSet(array: networkModel.localizedNames?.map({ (key: String, value: String) -> LocalizedOjbect in
-                        let localizedItem = LocalizedOjbect(context: self.context)
-                        localizedItem.language = key
-                        localizedItem.localizedString = value
-                        return localizedItem
-                    }) ?? [])
-
-                    return item
+            DatabaseManager.shared.persistantContainer.performBackgroundTask { (bgContext) in
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                    let decoder = JSONDecoder()
+                    decoder.userInfo[CodingUserInfoKey.context] = context
+                    let parsed = try decoder.decode([AlbionNetworkModel].self, from: data)
+                    _ = parsed.map { (networkModel) -> AlbionItem in
+                        let item = AlbionItem(context: bgContext)
+                        
+                        item.index = networkModel.index
+                        item.localizationDescriptionVariable = networkModel.localizationDescriptionVariable
+                        item.localizationNameVariable = networkModel.localizationNameVariable
+                        item.uniqueName = networkModel.uniqueName
+                        item.localizedNames = NSSet(array: networkModel.localizedNames?.map({ (key: String, value: String) -> LocalizedOjbect in
+                            let localizedItem = LocalizedOjbect(context: bgContext)
+                            localizedItem.language = key
+                            localizedItem.localizedString = value
+                            return localizedItem
+                        }) ?? [])
+                        
+                        item.localizedDescriptions = NSSet(array: networkModel.localizedNames?.map({ (key: String, value: String) -> LocalizedOjbect in
+                            let localizedItem = LocalizedOjbect(context: bgContext)
+                            localizedItem.language = key
+                            localizedItem.localizedString = value
+                            return localizedItem
+                        }) ?? [])
+                        
+                        return item
+                    }
+                    DatabaseManager.shared.saveContext(bgContext)
+                } catch {
+                    fatalError(error.localizedDescription)
                 }
-                DatabaseManager.shared.saveContext()
-            } catch {
-                fatalError(error.localizedDescription)
             }
-
         }
     }
 }

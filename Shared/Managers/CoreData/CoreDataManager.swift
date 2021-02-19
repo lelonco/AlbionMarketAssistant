@@ -26,11 +26,13 @@ class DatabaseManager: DatabaseManagerProtocol {
         let persistantContainer = PersistentContainer(name: "AlbionAssistant")
 
         persistantContainer.loadPersistentStores { _, error in
-            persistantContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             if let error = error {
                 fatalError("Unresolved error: \(error.localizedDescription)")
             }
         }
+        persistantContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        persistantContainer.viewContext.automaticallyMergesChangesFromParent = true
+        persistantContainer.viewContext.shouldDeleteInaccessibleFaults = true
         return persistantContainer
     }()
 
