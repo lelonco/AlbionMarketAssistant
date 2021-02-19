@@ -25,51 +25,32 @@ struct ContentView: View {
         }
     }
     var body: some View {
-        NavigationView {
+//        NavigationView {
             VStack {
                 TextField("Search", text: $viewModel.searchText)
                 if let data = viewModel.data {
                     Image(uiImage: UIImage(data: data)!)
                 }
-                Button(action: {
-                    viewModel.buttonTapped()
-//                            .store(in: &disposables)
-//                      self.showDetails.toggle()
-                  }) {
-                      Text("Show details")
-                  }
-                List(viewModel.fecthedResults) {
+//                Button(action: {
+//                    viewModel.buttonTapped()
+//                  }) {
+//                      Text("Show details")
+//                  }
+                List(viewModel.fecthedResults) { item in
 //                    let text = ($0.localizedNames?.allObjects.first as? LocalizedOjbect)
 //                    Text(text?.localizedString ?? "")
-
-                    let text = ($0.localizedNames?.allObjects.first(where: { (local) -> Bool in
-                        (local as! LocalizedOjbect).language == LocalisationLenguage.ru.rawValue
-                    }) as? LocalizedOjbect)
-                    Text((text as? LocalizedOjbect)?.localizedString ?? "")
+                    SearchViewCell(itemName: (item.localizedNames?.allObjects.first as? LocalizedOjbect)!.localizedString!, itemSellPrice: "3000", itemBuyPrice: "4000", profit: 30.5)
+                    
+//                    let text = ($0.localizedNames?.allObjects.first(where: { (local) -> Bool in
+//                        (local as! LocalizedOjbect).language == LocalisationLenguage.ru.rawValue
+//                    }) as? LocalizedOjbect)
+//                    Text((text as? LocalizedOjbect)?.localizedString ?? "")
                 }
-                .ignoresSafeArea()
+                .foregroundColor(.clear)
             }
             .navigationBarTitle("Title")
-        }
-        .navigationBarColor(backgroundColor: .black, tintColor: .white)
-    }
-    mutating func buttonTapped() {
-        let req = URLRequest(url: URL(string: "https://gameinfo.albiononline.com/api/gameinfo/items/T4_2H_WARBOW")!)
-        let pub = URLSession.shared.dataTaskPublisher(for: req)
-            .eraseToAnyPublisher()
-        sub = pub
-            .sink(receiveCompletion: { (complition) in
-                switch complition {
-                
-                case .finished:
-                    break
-                case let .failure(error):
-                    print(error)
-                }
-            }, receiveValue: { [self] (data: Data, response: URLResponse) in
-                self.data = data
-                print(response)
-            })
+//        }
+        .background(Color.white)
     }
 }
 
