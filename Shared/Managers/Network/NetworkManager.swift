@@ -71,7 +71,9 @@ class NetworkManager {
                 return NSError(domain: "Request failed with code: \(urlError.code)",
                                code: urlError.code.rawValue,
                                userInfo: nil)
-            }.eraseToAnyPublisher()
+            }
+            .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
     }
     
 
@@ -82,7 +84,12 @@ class NetworkManager {
             failure?(error)
             return nil
         }
-        guard let url = URL(string: endPoint, relativeTo: baseUrl) else {
+        
+        var parrentURL = baseUrl
+        if let customURL = request.customURLString {
+            parrentURL = URL(string: customURL)!
+        }
+        guard let url = URL(string: endPoint, relativeTo: parrentURL) else {
             let error = NSError(domain: "Cant create url!", code: -999, userInfo: nil)
             failure?(error)
             return nil

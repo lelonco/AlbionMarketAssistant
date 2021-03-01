@@ -10,7 +10,7 @@ import Foundation
 enum GithubApi: ApiRequestProtocol {
     
     case searchRepo(text: String, perPage: Int)
-    
+    case getImageFor(item:String, quality: Int, enchantment: Int)
     var httpMethod: HttpMethod {
         return .get
     }
@@ -19,6 +19,8 @@ enum GithubApi: ApiRequestProtocol {
         switch self {
         case .searchRepo:
             return  "search/repositories"
+        case .getImageFor(item: let item, quality: let quality, enchantment: let ench ):
+            return "v1/item/\(item)@\(ench)"
         default:
             return nil
         }
@@ -33,6 +35,8 @@ enum GithubApi: ApiRequestProtocol {
         switch self {
         case .searchRepo(let text, let perPage):
             return ["q": text, "sort": "stars", "order": "desc", "per_page": "\(perPage)"]
+        case .getImageFor(item: _, quality: let quality, enchantment: _ ):
+            return ["quality":"\(quality)"]
         default:
             return nil
         }
@@ -47,7 +51,12 @@ enum GithubApi: ApiRequestProtocol {
     }
     
     var customURLString: String? {
-        nil
+        switch self {
+        case .getImageFor:
+            return "https://render.albiononline.com"
+        default:
+            return nil
+        }
     }
 
 }
