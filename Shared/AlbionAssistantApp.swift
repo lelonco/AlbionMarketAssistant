@@ -31,27 +31,7 @@ struct AlbionAssistantApp: App {
                     decoder.userInfo[CodingUserInfoKey.context] = context
                     let parsed = try decoder.decode([AlbionNetworkModel].self, from: data)
                     _ = parsed.map { (networkModel) -> AlbionItem in
-                        let item = AlbionItem(context: bgContext)
-                        
-                        item.index = networkModel.index
-                        item.localizationDescriptionVariable = networkModel.localizationDescriptionVariable
-                        item.localizationNameVariable = networkModel.localizationNameVariable
-                        item.uniqueName = networkModel.uniqueName
-                        item.localizedNames = NSSet(array: networkModel.localizedNames?.map({ (key: String, value: String) -> LocalizedOjbect in
-                            let localizedItem = LocalizedOjbect(context: bgContext)
-                            localizedItem.language = key
-                            localizedItem.localizedString = value
-                            return localizedItem
-                        }) ?? [])
-                        
-                        item.localizedDescriptions = NSSet(array: networkModel.localizedNames?.map({ (key: String, value: String) -> LocalizedOjbect in
-                            let localizedItem = LocalizedOjbect(context: bgContext)
-                            localizedItem.language = key
-                            localizedItem.localizedString = value
-                            return localizedItem
-                        }) ?? [])
-                        
-                        return item
+                        return AlbionItem(networkModel: networkModel, context: bgContext)
                     }
                     DatabaseManager.shared.saveContext(bgContext)
                 } catch {
