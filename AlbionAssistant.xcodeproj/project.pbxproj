@@ -18,6 +18,8 @@
 		C42C13A225C8D1F900042D22 /* AlbionNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C13A125C8D1F900042D22 /* AlbionNetworkModel.swift */; };
 		C436CFE825C6289A00B1A364 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C436CFE725C6289A00B1A364 /* ContentView.swift */; };
 		C436CFE925C6289A00B1A364 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C436CFE725C6289A00B1A364 /* ContentView.swift */; };
+		C463B4E325ED9EAB0026D1B7 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463B4E225ED9EAB0026D1B7 /* CellViewModel.swift */; };
+		C463B4E425ED9EAB0026D1B7 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463B4E225ED9EAB0026D1B7 /* CellViewModel.swift */; };
 		C4A2759C25CC860D00603D54 /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2759B25CC860D00603D54 /* SearchViewCell.swift */; };
 		C4A2759D25CC860D00603D54 /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2759B25CC860D00603D54 /* SearchViewCell.swift */; };
 		C4BC5BA225C8C4AD003CCC8C /* LocalizedOjbect+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BC5B9E25C8C4AD003CCC8C /* LocalizedOjbect+CoreDataClass.swift */; };
@@ -71,6 +73,7 @@
 		C4207F8725C6F84E006C91BA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		C42C13A125C8D1F900042D22 /* AlbionNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbionNetworkModel.swift; sourceTree = "<group>"; };
 		C436CFE725C6289A00B1A364 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C463B4E225ED9EAB0026D1B7 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		C4A2759B25CC860D00603D54 /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
 		C4BC5B9E25C8C4AD003CCC8C /* LocalizedOjbect+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedOjbect+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C4BC5B9F25C8C4AD003CCC8C /* LocalizedOjbect+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedOjbect+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -145,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				C4207F8725C6F84E006C91BA /* SearchViewModel.swift */,
+				C463B4E225ED9EAB0026D1B7 /* CellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -154,7 +158,6 @@
 			children = (
 				C4C10F2125C612B200890C32 /* AlbionAssistant.xcdatamodeld */,
 				C4C10F2625C612B300890C32 /* Assets.xcassets */,
-				C4207F5C25C66317006C91BA /* UserDefaults+firstLaunch.swift */,
 				C4207F7B25C66E38006C91BA /* items.json */,
 				C4CF1A5425C6386700506585 /* Items.swift */,
 				C4CF1A5B25C638D700506585 /* albionItems */,
@@ -165,6 +168,7 @@
 		C463B4DD25ED966C0026D1B7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C4207F5C25C66317006C91BA /* UserDefaults+firstLaunch.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -464,6 +468,7 @@
 				C4D5CE3325E450A400EC27FF /* ApiRequest.swift in Sources */,
 				C4CF1A5525C6386700506585 /* Items.swift in Sources */,
 				C4207F5D25C66317006C91BA /* UserDefaults+firstLaunch.swift in Sources */,
+				C463B4E325ED9EAB0026D1B7 /* CellViewModel.swift in Sources */,
 				C4207F8825C6F84E006C91BA /* SearchViewModel.swift in Sources */,
 				C436CFE825C6289A00B1A364 /* ContentView.swift in Sources */,
 				C4D5CE3425E450A400EC27FF /* NetworkManager.swift in Sources */,
@@ -483,6 +488,7 @@
 			files = (
 				C4C10F4E25C612B400890C32 /* AlbionAssistant.xcdatamodeld in Sources */,
 				C4207F6625C665B6006C91BA /* CodingUserInfoKey+Extensions.swift in Sources */,
+				C463B4E425ED9EAB0026D1B7 /* CellViewModel.swift in Sources */,
 				C4CF1A5625C6386700506585 /* Items.swift in Sources */,
 				C4207F5E25C66317006C91BA /* UserDefaults+firstLaunch.swift in Sources */,
 				C4207F8925C6F84E006C91BA /* SearchViewModel.swift in Sources */,
