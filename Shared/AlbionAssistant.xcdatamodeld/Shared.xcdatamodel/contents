@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D64" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D74" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AlbionItem" representedClassName="AlbionItem" syncable="YES">
         <attribute name="index" optional="YES" attributeType="String"/>
         <attribute name="localizationDescriptionVariable" optional="YES" attributeType="String"/>
@@ -7,6 +7,7 @@
         <attribute name="uniqueName" optional="YES" attributeType="String"/>
         <relationship name="localizedDescriptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocalizedOjbect" inverseName="describedItem" inverseEntity="LocalizedOjbect"/>
         <relationship name="localizedNames" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocalizedOjbect" inverseName="namedItem" inverseEntity="LocalizedOjbect" spotlightIndexingEnabled="YES"/>
+        <relationship name="marketItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarketItem" inverseName="item" inverseEntity="MarketItem"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="uniqueName"/>
@@ -19,8 +20,22 @@
         <relationship name="describedItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbionItem" inverseName="localizedDescriptions" inverseEntity="AlbionItem"/>
         <relationship name="namedItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbionItem" inverseName="localizedNames" inverseEntity="AlbionItem"/>
     </entity>
+    <entity name="MarketItem" representedClassName="MarketItem" syncable="YES">
+        <attribute name="buyPriceMax" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="buyPriceMaxDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="buyPriceMin" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="buyPriceMinDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="quality" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sellPriceMax" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sellPriceMaxDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sellPriceMin" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sellPriceMinDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbionItem" inverseName="marketItem" inverseEntity="AlbionItem"/>
+    </entity>
     <elements>
-        <element name="AlbionItem" positionX="-63" positionY="-18" width="128" height="119"/>
-        <element name="LocalizedOjbect" positionX="-63" positionY="27" width="128" height="89"/>
+        <element name="AlbionItem" positionX="-242.41015625" positionY="194.6953125" width="128" height="134"/>
+        <element name="LocalizedOjbect" positionX="-63" positionY="27" width="128" height="103"/>
+        <element name="MarketItem" positionX="-413.6953125" positionY="-2.984375" width="128" height="208"/>
     </elements>
 </model>
