@@ -143,6 +143,7 @@
 		C4207F6325C6659C006C91BA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C4207F5C25C66317006C91BA /* UserDefaults+firstLaunch.swift */,
 				C4207F6425C665B6006C91BA /* CodingUserInfoKey+Extensions.swift */,
 			);
 			path = Extensions;
@@ -167,14 +168,6 @@
 				C4CF1A5B25C638D700506585 /* albionItems */,
 			);
 			name = Misc;
-			sourceTree = "<group>";
-		};
-		C463B4DD25ED966C0026D1B7 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				C4207F5C25C66317006C91BA /* UserDefaults+firstLaunch.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		C463B4FB25EDBAB80026D1B7 /* MarketItem */ = {
@@ -228,7 +221,6 @@
 		C4C10F2025C612B200890C32 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				C463B4DD25ED966C0026D1B7 /* Utils */,
 				C463B4DC25ED96430026D1B7 /* Misc */,
 				C4A2759A25CC85D200603D54 /* Views */,
 				C4207F8625C6F83B006C91BA /* ViewModels */,
