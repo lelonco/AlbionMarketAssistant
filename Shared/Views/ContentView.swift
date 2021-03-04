@@ -39,7 +39,8 @@ struct ContentView: View {
                 List(viewModel.fecthedResults) { item in
 //                    let text = ($0.localizedNames?.allObjects.first as? LocalizedOjbect)
 //                    Text(text?.localizedString ?? "")
-                    SearchViewCell(itemName: ((item.localizedNames?.allObjects.first as? LocalizedOjbect)?.localizedString) ?? "", itemSellPrice: "3000", itemBuyPrice: "4000", profit: 30.5)
+                    SearchViewCell(with: item)
+//                        itemName: ((item.localizedNames?.allObjects.first as? LocalizedOjbect)?.localizedString) ?? "", itemSellPrice: "3000", itemBuyPrice: "4000", profit: 30.5)
                     
 //                    let text = ($0.localizedNames?.allObjects.first(where: { (local) -> Bool in
 //                        (local as! LocalizedOjbect).language == LocalisationLenguage.ru.rawValue
