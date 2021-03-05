@@ -16,7 +16,7 @@ class SearchViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDel
         }
     }
     @Published var data: Data? = nil
-    @Published var fecthedResults: [AlbionItem]! = []
+    @Published var fecthedResults: [SectionViewModel]! = []
     private var disposables = Set<AnyCancellable>()
     private var fetchedResultsController: NSFetchedResultsController<AlbionItem> = {
         let request: NSFetchRequest<AlbionItem> = AlbionItem.fetchRequest()
@@ -34,6 +34,15 @@ class SearchViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDel
         try! fetchedResultsController.performFetch()
         try! DatabaseManager.shared.managedContext.execute(request)
         
+//        let apireq = AlbionApi.getImageFor(item: "T4_BAG", quality: 4, enchantment: 3)
+//        NetworkManager.shared.makeRequest(apireq).sink { (error) in
+//            print(error)
+//        } receiveValue: { (data: Data, response: URLResponse) in
+//            print(response)
+//            self.data = data
+//        }.store(in: &disposables)
+
+        //TODO: - create async fetchreq
         $searchText
             .dropFirst()
             .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
@@ -42,14 +51,15 @@ class SearchViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDel
                 try! DatabaseManager.shared.managedContext.execute(request)
             }
             .store(in: &disposables)
-        $data
-            .sink { (data) in
-                guard let data = data else { return }
-                var path = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                path.appendPathComponent("image.jpg")//               "/Users/yaroslav/Library/Developer/CoreSimulator/Devices/1B9BE451-4057-4348-BE09-7B5DFBA2CBC7/data/Containers/Bundle/Application/2A4FD907-A08A-49A5-94EB-572267FB2745/image.jpg"
-                try! data.write(to: path)
-            }
-            .store(in: &disposables)
+        
+//        $data
+//            .sink { (data) in
+//                guard let data = data else { return }
+//                var path = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+//                path.appendPathComponent("image.jpg")
+//                try! data.write(to: path)
+//            }
+//            .store(in: &disposables)
     }
     
     func buttonTapped() {
@@ -85,7 +95,7 @@ class SearchViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDel
             request.sortDescriptors = [sort]
         }
         let asyncRequest = NSAsynchronousFetchRequest(fetchRequest: request, completionBlock: { (items) in
-            self.fecthedResults = items.finalResult ?? []
+            self.fecthedResults = items.finalResult?.map({SectionViewModel(with: $0) }) ?? []
         })
         return asyncRequest
     }
@@ -94,7 +104,7 @@ class SearchViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDel
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChangeContentWith diff: CollectionDifference<NSManagedObjectID>) {
-        self.fecthedResults = self.fetchedResultsController.fetchedObjects ?? []
+        self.fecthedResults = self.fetchedResultsController.fetchedObjects?.map({ SectionViewModel(with: $0) })
     }
 
 }

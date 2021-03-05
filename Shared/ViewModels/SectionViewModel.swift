@@ -9,6 +9,8 @@ import CoreData
 
 class SectionViewModel: NSObject, NSFetchedResultsControllerDelegate, Identifiable {
     private let item: AlbionItem
+    @Published var imageData: Data? = nil
+
     let prices:[MarketItem] = []
     
     private var fetchedResultsController: NSFetchedResultsController<MarketItem>?
