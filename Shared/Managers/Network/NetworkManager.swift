@@ -111,7 +111,9 @@ class NetworkManager {
         }
         task.resume()
     }
+    //TODO: - Create download method using combine
     
+    //MARK: - Private helpers
     private func prepareUrlRequest(with request: ApiRequestProtocol, failure: ((Error) -> Void)? = nil) -> URLRequest? {
 
         guard let endPoint = request.endPoint else {
