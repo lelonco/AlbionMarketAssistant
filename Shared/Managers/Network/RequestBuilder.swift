@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum GithubApi: ApiRequestProtocol {
+enum AlbionApi: ApiRequestProtocol {
     
     case searchRepo(text: String, perPage: Int)
-    case getImageFor(item:String, quality: Int, enchantment: Int)
+    case getImageFor(item:String, quality: Int)
     var httpMethod: HttpMethod {
         return .get
     }
@@ -19,8 +19,8 @@ enum GithubApi: ApiRequestProtocol {
         switch self {
         case .searchRepo:
             return  "search/repositories"
-        case .getImageFor(item: let item, quality: let quality, enchantment: let ench ):
-            return "v1/item/\(item)@\(ench)"
+        case .getImageFor(item: let item):
+            return "v1/item/\(item)"
         default:
             return nil
         }
@@ -35,7 +35,7 @@ enum GithubApi: ApiRequestProtocol {
         switch self {
         case .searchRepo(let text, let perPage):
             return ["q": text, "sort": "stars", "order": "desc", "per_page": "\(perPage)"]
-        case .getImageFor(item: _, quality: let quality, enchantment: _ ):
+        case .getImageFor(item: _, quality: let quality):
             return ["quality":"\(quality)"]
         default:
             return nil

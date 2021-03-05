@@ -25,9 +25,12 @@ class NetworkManager {
     }
     
     func makeRequest(_ request: ApiRequestProtocol,
-                     success:@escaping (URLResponse?, Any?) -> Void, failure:@escaping (Error) -> Void) {
+                     success:@escaping (URLResponse?, Any?) -> Void,
+                     failure:@escaping (Error) -> Void) {
         guard firstFailureRequest == nil else { return }
         guard let urlRequest = self.prepareUrlRequest(with: request, failure: failure) else {
+            let nsError = NSError(domain: "Cant create request", code: -999, userInfo: nil)
+            failure(nsError)
             return
         }
         let task = session.dataTask(with: urlRequest) { data, response, error in
@@ -76,7 +79,39 @@ class NetworkManager {
             .eraseToAnyPublisher()
     }
     
-
+    func downloadRequest(_ request: ApiRequestProtocol,
+                         success:@escaping (URLResponse?, Any?) -> Void,
+                         failure:@escaping (Error) -> Void) {
+        
+        guard let urlRequest = self.prepareUrlRequest(with: request, failure: failure) else {
+            let nsError = NSError(domain: "Cant create request", code: -999, userInfo: nil)
+            failure(nsError)
+            return
+        }
+        
+        let task = session.downloadTask(with: urlRequest) { (url, response, error) in
+            
+            guard let tempURL = url,
+                  let response = response else {
+                if let err = error {
+                    failure(err)
+                } else {
+                    let nsError = NSError(domain: "Something went wrong", code: -999, userInfo: nil)
+                    failure(nsError)
+                }
+                return
+            }
+            do {
+                let data = try Data(contentsOf: tempURL, options: .mappedIfSafe)
+                success(response, data)
+            } catch {
+                let nsError = NSError(domain: "Cant read file localy", code: -999, userInfo: nil)
+                failure(nsError)
+            }
+        }
+        task.resume()
+    }
+    
     private func prepareUrlRequest(with request: ApiRequestProtocol, failure: ((Error) -> Void)? = nil) -> URLRequest? {
 
         guard let endPoint = request.endPoint else {
