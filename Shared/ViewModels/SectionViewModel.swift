@@ -6,8 +6,8 @@
 //
 
 import CoreData
-
-class SectionViewModel: NSObject, NSFetchedResultsControllerDelegate, Identifiable {
+import Combine
+class SectionViewModel: NSObject, NSFetchedResultsControllerDelegate, Identifiable, ObservableObject {
     private let item: AlbionItem
     @Published var imageData: Data? = nil
 
@@ -15,7 +15,8 @@ class SectionViewModel: NSObject, NSFetchedResultsControllerDelegate, Identifiab
     
     private var fetchedResultsController: NSFetchedResultsController<MarketItem>?
 
-    
+    private let imageManager = ImageManager.shared
+    private var disposables = Set<AnyCancellable>()
     init(with item: AlbionItem) {
         self.item = item
         super.init()
@@ -24,6 +25,18 @@ class SectionViewModel: NSObject, NSFetchedResultsControllerDelegate, Identifiab
         fetchedResultsController?.delegate = self
     }
  
+    func prepareImage() {
+        imageManager.imageData(for: item)
+            .eraseToAnyPublisher()
+            .receive(on: DispatchQueue.main)
+            .sink { (error) in
+                print(error)
+            } receiveValue: { [weak self] (image) in
+                self?.imageData = image.pngData()
+                self?.disposables.forEach({ $0.cancel() })
+            }
+            .store(in: &disposables)
+    }
     func setupFetchedResultsController() {
         let request: NSFetchRequest<MarketItem> = MarketItem.fetchRequest()
         let itemId = item.objectID

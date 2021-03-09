@@ -13,7 +13,7 @@ struct SearchViewCell: View {
     var itemSellPrice = "Sell: 14379"
     var itemBuyPrice = "Buy: 5500"
     var profit = 32.3
-    var sectionVM: SectionViewModel
+    @ObservedObject var sectionVM: SectionViewModel
     @State var didExpanded = false
     
     var body: some View {
@@ -24,9 +24,15 @@ struct SearchViewCell: View {
             VStack {
                 HStack {
                     HStack(spacing: 5) {
-                        Image("image")
-                            .resizable()
-                            .scaledToFit()
+                        if let data = sectionVM.imageData {
+                            Image(uiImage: (UIImage(data: sectionVM.imageData ?? Data()) ?? UIImage(named: "image"))!)
+                                .resizable()
+                                .scaledToFit()
+
+                        } else {
+                            ProgressView()
+                                .frame(width: 78, height: 78, alignment: .center)
+                        }
                         VStack(alignment: .leading) {
                             Text(itemName)
                             Text(itemSellPrice)
@@ -56,6 +62,9 @@ struct SearchViewCell: View {
         }
         .frame(width: 350, height: 78, alignment: .center)
         .foregroundColor(.white)
+        .onAppear(perform: { 
+            self.sectionVM.prepareImage()
+        })
     }
     
     init(with section: SectionViewModel) {

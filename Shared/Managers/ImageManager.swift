@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Combine
 
 final class ImageManager {
     private lazy var networkManager = NetworkManager.shared
@@ -17,22 +18,33 @@ final class ImageManager {
         
     }
     
-    func imageData(for item:AlbionItem) -> UIImage? {
-        guard let itemName = item.uniqueName else { return nil }
-        if let storredData = loadData(with: itemName) {
-            return UIImage(data: storredData)
+    func imageData(for item: AlbionItem) -> Future<UIImage, Error> {
+        return Future { [weak self] promise in
+            guard let self = self,
+                  let itemName = item.uniqueName else {
+                return promise(.failure(NSError(domain: "Cant get item name = \(item.uniqueName)",
+                                                code: -999,
+                                                userInfo:nil)))
+            }
+            if let storredData = self.loadData(with: itemName),
+               let unwrappedImage = UIImage(data: storredData) {
+                return promise(.success(unwrappedImage))
+            }
+            let req = AlbionApi.getImageFor(item: itemName, quality: 0)
+            self.networkManager.downloadRequest(req) { [weak self](response, data) in
+                guard let imageData = data as? Data,
+                      let recievedImage = UIImage(data: imageData) else {
+                    //TODO: Add retry request
+                    return promise(.failure(NSError(domain: "Cant get image, image data count = \((data as? Data)?.count) \n \(itemName)",
+                                                    code: -999,
+                                                    userInfo:nil)))
+                }
+                self?.save(data: imageData, fileName: itemName)
+                promise(.success(recievedImage))
+            } failure: { (error) in
+                promise(.failure(error))
+            }
         }
-        let req = AlbionApi.getImageFor(item: itemName, quality: 0)
-        var image: UIImage? = nil
-        networkManager.downloadRequest(req) { (response, data) in
-            guard let imageData = data as? Data,
-                  let recievedImage = UIImage(data: imageData) else { return }
-            image = recievedImage
-        } failure: { (error) in
-            assertionFailure(error.localizedDescription)
-        }
-
-        return image
     }
     
     func imageData(for marketItem:MarketItem) -> UIImage? {
@@ -73,15 +85,16 @@ final class ImageManager {
         return true
     }
     
-    private func loadData(with filename: String) -> Data? {
-        guard let path = Bundle.main.path(forResource: filename, ofType: "jpg") else {
-            return nil
-        }
+    private func loadData(with fileName: String) -> Data? {
         do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            var path = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let fileNameWithExtension = fileName.appending(".jpg")
+            path.appendPathComponent(fileNameWithExtension)
+            
+            let data = try Data(contentsOf: path, options: .mappedIfSafe)
             return data
         } catch {
-            assertionFailure(error.localizedDescription)
+            print("cant find \(fileName)")
             return nil
         }
     }

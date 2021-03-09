@@ -7,7 +7,7 @@
 
 import CoreData
 
-class MarketItemViewModel {
+class MarketItemViewModel: ObservableObject {
     
     private let marketItem: MarketItem
     

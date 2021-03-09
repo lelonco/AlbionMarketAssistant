@@ -19,8 +19,8 @@ enum AlbionApi: ApiRequestProtocol {
         switch self {
         case .searchRepo:
             return  "search/repositories"
-        case .getImageFor(item: let item):
-            return "v1/item/\(item)"
+        case .getImageFor(item: let itemName):
+            return "v1/item/\(itemName.item)"
         default:
             return nil
         }
